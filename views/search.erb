@@ -1,0 +1,18 @@
+<h1>備品情報検索システム ver.β</h1>
+<ul>
+  <h2>検索結果</h2>
+	<% @assets.each do |asset| %>
+	<li data-id="<%= asset.id %>">
+	  <%= h asset.id %>
+	  <%= h asset.name %>
+	  <%= h asset.url %>
+	  <%= h asset.category %>
+	  <%= h asset.count %>
+	  <%= h asset.memo %>
+	  <%= h asset.admin %>
+	  <%= h asset.created_at %>
+	  <%= h asset.updated_at %>
+	</li>
+	<% end %>
+
+</ul>
