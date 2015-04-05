@@ -3,8 +3,8 @@ require 'sinatra/reloader'
 require 'active_record'
 
 ActiveRecord::Base.establish_connection(
-	"adapter" => "sqlite3",
-	"database" => "./assetList.db"
+  "adapter" => "sqlite3",
+  "database" => "./assetList.db"
 )
 
 class Asset < ActiveRecord::Base
@@ -32,7 +32,7 @@ get '/search' do
   end
   @assets = result
 
-	erb :search
+  erb :search
 end
 
 post '/search?:key' do
@@ -46,7 +46,7 @@ post '/search?:key' do
   end
   @assets = result
 
-	erb :search
+  erb :search
 end
 
 # 追加
@@ -57,12 +57,12 @@ end
 
 post '/new' do
   Asset.create(
-  	name: params[:name],
-  	url: params[:url],
-  	category: params[:category],
-  	count: params[:count],
-  	memo: params[:memo],
-  	admin: params[:admin],
+    name: params[:name],
+    url: params[:url],
+    category: params[:category],
+    count: params[:count],
+    memo: params[:memo],
+    admin: params[:admin],
   )
   redirect '/new'
 end
