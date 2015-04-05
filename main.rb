@@ -11,8 +11,8 @@ class Asset < ActiveRecord::Base
 end
 
 helpers do
-    include Rack::Utils
-    alias_method :h, :escape_html
+  include Rack::Utils
+  alias_method :h, :escape_html
 end
 
 get '/' do
