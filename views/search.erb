@@ -1,18 +1,38 @@
-<h1>備品情報検索システム ver.β</h1>
 <ul>
-  <h2>検索結果</h2>
-	<% @assets.each do |asset| %>
-	<li data-id="<%= asset.id %>">
-	  <%= h asset.id %>
-	  <%= h asset.name %>
-	  <%= h asset.url %>
-	  <%= h asset.category %>
-	  <%= h asset.count %>
-	  <%= h asset.memo %>
-	  <%= h asset.admin %>
-	  <%= h asset.created_at %>
-	  <%= h asset.updated_at %>
-	</li>
-	<% end %>
+  <div class="container bs-docs-container">
+		<div class="row">
+		  <div class="" role="main">
+				<div class="" data-example-id="carousel-with-captions">
+			  </div>
 
+			  <h3>検索結果</h3>
+			  <table class="table table-bordered table-striped">
+			  	<thead>
+			  		<tr>
+			  			<th>ID</th>
+			  			<th>名前</th>
+			  			<th>URL</th>
+			  			<th>カテゴリ</th>
+			  			<th>カウント</th>
+			  			<th>メモ</th>
+			  			<th>管理者</th>
+						</tr>
+			  	</thead>
+			  	<tbody>
+						<% @assets.each do |asset| %>
+			  	  <tr>
+		          <th scope="row"><%= asset.id %></th>
+						  <td><%= h asset.name %></td>
+						  <td><%= h asset.url %></td>
+						  <td><%= h asset.category %></td>
+						  <td><%= h asset.count %></td>
+						  <td><%= h asset.memo %></td>
+						  <td><%= h asset.admin %></td>
+		        </tr>
+						<% end %>
+		 	  	</tbody>
+			  </table>
+			</div>
+		</div>
+	</div>
 </ul>
