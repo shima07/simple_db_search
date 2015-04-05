@@ -16,11 +16,13 @@ helpers do
 end
 
 get '/' do
+  @title = "ホーム"
   erb :index
 end
 
 # 検索
 get '/search' do
+  @title = "検索"
   result = Asset.all
 
   if result.empty?
@@ -33,8 +35,9 @@ get '/search' do
 	erb :search
 end
 
-get '/search?:key' do |n|
-  result = Asset.where("name like ?", "%" + n + "%").order('created_at DESC').limit(30)
+post '/search?:key' do
+  @title = "検索"
+  result = Asset.where("name like ?", "%" + params[:name] + "%").limit(30)
 
   if result.empty?
     print "not found\n"
@@ -48,6 +51,7 @@ end
 
 # 追加
 get '/new' do
+  @title = "登録"
   erb :new
 end
 
@@ -60,11 +64,12 @@ post '/new' do
   	memo: params[:memo],
   	admin: params[:admin],
   )
-  redirect '/search'
+  redirect '/new'
 end
 
 # 更新
 get '/update' do
+  @title = "更新"
   erb :update
 end
 
@@ -89,6 +94,7 @@ end
 
 # 削除
 get '/delete' do
+  @title = "削除"
   erb :delete
 end
 
@@ -107,17 +113,3 @@ end
 not_found do
   redirect '/'
 end
-
-=begin
-get '/hello/:name' do
-    "hello #{params[:name]}"
-end
- 
-get '/hello/:name' do |n|
-    "hello #{n}"
-end
-
-get '/hello/:fname/?:lname?' do |f, l|
-  "hello #{f} #{l}"
-end
-=end
