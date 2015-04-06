@@ -118,3 +118,10 @@ end
 not_found do
   redirect '/'
 end
+
+#Webapi
+get '/api/' do
+  content_type :json, :charset => 'utf-8'
+  assets = Asset.order("created_at ASC")
+  assets.to_json(:root => false)
+end
