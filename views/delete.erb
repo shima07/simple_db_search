@@ -6,13 +6,13 @@
 </ul>
 
 <script>
-    $('.deleteBtn').click(function() {
-        var el = $('#deleteIndex');
-        if (confirm('削除しますか？')) {
-            $.post('/admin/delete', {
-                id: el.val()
-            }, function() {
-            });
-        }
-    })
+  $('.deleteBtn').click(function() {
+      var el = $('#deleteIndex');
+      if (confirm('削除しますか？')) {
+          $.post('/admin/delete', {
+              id: el.val()
+          }, function() {
+          });
+      }
+  })
 </script>

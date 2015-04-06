@@ -4,15 +4,15 @@
       <div class="" role="main">
         <h3>検索結果</h3>
         <p>「<%= @key %>」で検索</p>
-        タグで絞り込み：<input type="text" name="name" value="" style="margin-bottom:8px;">
-        <table class="table table-bordered table-striped">
+        絞り込み：<input id="selectword" type="text" name="name" value="" style="margin-bottom:8px;">
+        <table id="result" class="table table-bordered table-striped">
           <thead>
             <tr>
               <th>ID</th>
               <th>名前</th>
               <th>URL</th>
               <th>タグ</th>
-              <th>カウント</th>
+              <th>数量</th>
               <th>メモ</th>
               <th>管理者</th>
             </tr>
@@ -35,3 +35,22 @@
     </div>
   </div>
 </ul>
+
+<script>
+  $("#selectword").keyup(function (e) {
+    console.log("tes");
+    var re = new RegExp($('#selectword').val());
+    if (re == null){
+      $('#result tr').show();
+    }else{
+      $('#result tbody tr').each(function(){
+        var txt = $(this).find("td:eq(0)").html();
+        if(txt.match(re) != null){
+          $(this).show();
+        }else{
+          $(this).hide();
+        }
+      });
+    }
+  });
+</script>
