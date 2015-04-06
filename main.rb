@@ -37,6 +37,7 @@ end
 
 post '/search?:key' do
   @title = "検索"
+  @key = params[:name]
   result = Asset.where("name like ?", "%" + params[:name] + "%").limit(30)
 
   if result.empty?
