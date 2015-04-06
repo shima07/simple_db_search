@@ -1,7 +1,18 @@
 <ul>
   <h3>備品情報を削除</h3>
-  <form method="post" action="/delete">
-    <input type="text" name="id" value="1">
-    <input type="submit" value="削除">
+  <input id="deleteIndex" type="text" name="id" value="1">
+  <span class="deleteBtn"><button>削除</button></span>
   </form>
 </ul>
+
+<script>
+    $('.deleteBtn').click(function() {
+        var el = $('#deleteIndex');
+        if (confirm('削除しますか？')) {
+            $.post('/admin/delete', {
+                id: el.val()
+            }, function() {
+            });
+        }
+    })
+</script>

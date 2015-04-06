@@ -50,12 +50,12 @@ post '/search?:key' do
 end
 
 # 追加
-get '/new' do
+get '/admin/new' do
   @title = "登録"
   erb :new
 end
 
-post '/new' do
+post '/admin/new' do
   Asset.create(
     name: params[:name],
     url: params[:url],
@@ -64,21 +64,21 @@ post '/new' do
     memo: params[:memo],
     admin: params[:admin],
   )
-  redirect '/new'
+  redirect '/admin/new'
 end
 
 # 更新
-get '/update' do
+get '/admin/update' do
   @title = "更新"
   erb :update
 end
 
-post '/update' do
+post '/admin/update' do
   asset = Asset.find_by_id(params[:id])
 
   if asset.nil?
     print "not found\n"
-    redirect '/'
+    redirect '/admin/update'
   else
     asset.update_attributes(
       name: params[:name],
@@ -88,17 +88,17 @@ post '/update' do
       memo: params[:memo],
       admin: params[:admin],
       )
-    redirect '/update'
+    redirect '/admin/update'
   end
 end
 
 # 削除
-get '/delete' do
+get '/admin/delete' do
   @title = "削除"
   erb :delete
 end
 
-post '/delete' do
+post '/admin/delete' do
   asset = Asset.find_by_id(params[:id])
 
   if asset.nil?
@@ -106,7 +106,7 @@ post '/delete' do
     redirect '/'
   else
     asset.delete
-    redirect '/delete'
+    redirect '/admin/delete'
   end
 end
 
