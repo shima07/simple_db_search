@@ -7,6 +7,10 @@ ActiveRecord::Base.establish_connection(
   "database" => "./assetList.db"
 )
 
+after do
+  ActiveRecord::Base.connection.close
+end
+
 class Asset < ActiveRecord::Base
 end
 
