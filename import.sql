@@ -2,7 +2,7 @@ create table assets (
   id integer primary key,
   name text,
   url text,
-  category text,
+  tag text,
   count integer,
   memo text,
   admin text,

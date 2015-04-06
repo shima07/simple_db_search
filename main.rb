@@ -59,7 +59,7 @@ post '/admin/new' do
   Asset.create(
     name: params[:name],
     url: params[:url],
-    category: params[:category],
+    tag: params[:tag],
     count: params[:count],
     memo: params[:memo],
     admin: params[:admin],
@@ -83,7 +83,7 @@ post '/admin/update' do
     asset.update_attributes(
       name: params[:name],
       url: params[:url],
-      category: params[:category],
+      tag: params[:tag],
       count: params[:count],
       memo: params[:memo],
       admin: params[:admin],
